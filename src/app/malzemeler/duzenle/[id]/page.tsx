@@ -28,7 +28,13 @@ type EditPageProps = {
 */
 
 // Tipi doğrudan fonksiyon imzasına yazıyoruz
-export default function EditMaterialPage({ params }: { params: { id: string } }) {
+export default function EditMaterialPage({
+  params,
+  searchParams // searchParams eklendi
+}: {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined }; // searchParams tipi eklendi
+}) {
   const router = useRouter()
   const supabase = createClient()
   const materialId = params.id // URL'den ID'yi al
