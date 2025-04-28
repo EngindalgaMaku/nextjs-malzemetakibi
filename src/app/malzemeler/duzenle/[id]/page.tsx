@@ -18,14 +18,17 @@ type Malzeme = {
   sorumlu_ogretmen: string | null;
 };
 
-// Sayfa props'ları için tip (dinamik segment 'id' içerir)
+// EditPageProps tipini kaldırıyoruz
+/*
 type EditPageProps = {
   params: {
     id: string;
   };
 };
+*/
 
-export default function EditMaterialPage({ params }: EditPageProps) {
+// Tipi doğrudan fonksiyon imzasına yazıyoruz
+export default function EditMaterialPage({ params }: { params: { id: string } }) {
   const router = useRouter()
   const supabase = createClient()
   const materialId = params.id // URL'den ID'yi al
