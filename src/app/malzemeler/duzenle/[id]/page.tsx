@@ -6,7 +6,7 @@ import { createClient } from '@/lib/supabase/client'
 import { updateMaterial } from '../../actions'
 import Link from 'next/link'
 
-// Malzeme tipini tekrar tanımlayalım veya import edelim
+// Malzeme tipi
 type Malzeme = {
   id: string;
   created_at: string;
@@ -18,17 +18,11 @@ type Malzeme = {
   sorumlu_ogretmen: string | null;
 };
 
-// Prop tipi
-type EditMaterialPageProps = {
-  params: { id: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-};
-
-// Bileşeni React.FC ile tanımla
-const EditMaterialPage: React.FC<EditMaterialPageProps> = ({ params, searchParams }) => {
+// React.FC ve ayrı prop tipi kaldırıldı, en basit inline tip kullanıldı
+export default function EditMaterialPage({ params }: { params: { id: string } }) {
   const router = useRouter()
   const supabase = createClient()
-  const materialId = params.id // ID'yi al
+  const materialId = params.id
 
   const [material, setMaterial] = useState<Partial<Malzeme>>({})
   const [isLoading, setIsLoading] = useState(true)
@@ -141,6 +135,4 @@ const EditMaterialPage: React.FC<EditMaterialPageProps> = ({ params, searchParam
       </form>
     </main>
   )
-}
-
-export default EditMaterialPage 
+} 
