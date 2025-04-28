@@ -14,7 +14,13 @@ type Malzeme = {
   sorumlu_ogretmen: string | null;
 };
 
-export default async function EditMaterialPage({ params }: { params: { id: string } }) {
+type Props = {
+  params: {
+    id: string
+  }
+}
+
+export default async function EditMaterialPage({ params }: Props) {
   const supabase = createClient()
   
   // Server-side veri çekme
