@@ -14,13 +14,14 @@ type Malzeme = {
   sorumlu_ogretmen: string | null;
 };
 
-type Props = {
-  params: {
-    id: string
-  }
-}
+// Added new props type definition
+type EditMaterialPageProps = {
+  params: { id: string };
+  // Optional: Add searchParams if you might use them
+  // searchParams?: { [key: string]: string | string[] | undefined };
+};
 
-export default async function EditMaterialPage({ params }: Props) {
+export default async function EditMaterialPage({ params }: EditMaterialPageProps) {
   const supabase = createClient()
   
   // Server-side veri çekme
