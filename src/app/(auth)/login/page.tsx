@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import Image from 'next/image' // Import Image component
-import { login } from './actions' // Server Action'ı import edeceğiz
+import { login } from './actions' // Server Action'ı import edeceğiz (Corrected path)
+import { FiLogIn } from "react-icons/fi"; // Import the icon
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
@@ -19,9 +20,10 @@ export default function LoginPage() {
   }
 
   return (
-    <main>
-      {/* Card container */}
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    // Styling is now handled by (auth)/layout.tsx
+    <main className="flex min-h-screen items-center justify-center p-4">
+      {/* Card container - increased max-width */}
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
         
         {/* Logo */}
         <div className="flex justify-center mb-6">
@@ -85,7 +87,7 @@ export default function LoginPage() {
             type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition duration-150 ease-in-out flex items-center justify-center gap-2"
           >
-            {/* Add icon here if needed, e.g., <LoginIcon className="h-5 w-5" /> */}
+            <FiLogIn className="h-5 w-5" />
             Giriş Yap
           </button>
           

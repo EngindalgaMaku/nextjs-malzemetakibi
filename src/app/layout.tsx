@@ -6,8 +6,8 @@ import Navbar from "@/components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Malzeme Takip Paneli",
-  description: "Hüsniye Özdilek MTAL Bilişim Alanı Malzeme Takip Sistemi",
+  title: "OLD TOWN COFFEE YÖNETİM PANELİ",
+  description: "OLD TOWN COFFEE",
 };
 
 export default function RootLayout({
