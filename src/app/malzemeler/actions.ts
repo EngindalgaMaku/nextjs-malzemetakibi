@@ -5,14 +5,15 @@ import { cookies } from 'next/headers'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation' // Gerekirse yönlendirme için
 
-export async function deleteMaterial(formData: FormData): Promise<{ error?: string }> {
+export async function deleteMaterial(formData: FormData): Promise<void> {
   const cookieStore = cookies()
   const supabase = createClient()
 
   const id = formData.get('id') as string
 
   if (!id) {
-    return { error: 'Silinecek malzeme ID bilgisi eksik.' }
+    console.error('Silinecek malzeme ID bilgisi eksik.')
+    return;
   }
 
   // Silme işlemi için RLS politikası gerekli!
@@ -31,7 +32,7 @@ export async function deleteMaterial(formData: FormData): Promise<{ error?: stri
 
   if (error) {
     console.error('Supabase malzeme silme hatası:', error)
-    return { error: 'Malzeme silinirken bir hata oluştu: ' + error.message }
+    return;
   }
 
   // Başarılı silme sonrası:
@@ -42,8 +43,6 @@ export async function deleteMaterial(formData: FormData): Promise<{ error?: stri
   // sayfa zaten revalidate ile güncellenecektir.
   // İsterseniz bir başarı mesajıyla yönlendirme yapabilirsiniz:
   // redirect('/malzemeler?message=Malzeme başarıyla silindi!')
-
-  return {}
 }
 
 // ADD MATERIAL ACTION
